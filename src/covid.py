@@ -44,13 +44,14 @@ print("ultimo elemento español")
 
 x = lastspain
 
+
 for i in range(14):
     x = x + x * mediaspain
     print("adding")
     print(x)
     dataspain.append(x, ignore_index = True)
 
-print(dataspain)
+print(dataspain.index)
 dataspain.plot()
 plt.show()
 
