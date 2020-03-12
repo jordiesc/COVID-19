@@ -3,16 +3,26 @@ import matplotlib.pyplot as plt
 import numpy as np
 from datetime import datetime  
 from datetime import timedelta  
+from pandas import DataFrame
 
-def stimation(likehood, date_time_str, initialvalue):
+
+
+def stimation(df: DataFrame , likehood, initialvalue):
     print (datetime.now() + timedelta(days=1) ) 
-    date_time_obj = datetime.datetime.strptime(date_time_str, '%m/%d/%y') 
     lst = []
     x = initialvalue
-    df2 = pd.DataFrame()
-    for i in range(14):
-        x = x + x * likehod
+    for i in range(15):
+        x = x + x * likehood
         lst.append(x)
-        print("adding")
         print(x)
-        dataspain.append(x, ignore_index = True)
+        df.loc[str(i)]=x
+    print(df)
+    return df
+
+    
+
+df = DataFrame(columns=['casos'])
+df = stimation(df,.2,100)
+
+df.plot()
+plt.show()
