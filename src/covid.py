@@ -30,9 +30,10 @@ def get_growth_factor(dataset,country_name):
             diferences.iat[i-1] = growth_factor
 
         # print("diferences iloc ",diferences.iloc[i], diferences.iloc[i-1] )
-    grothfactor = diferences.iloc[:len(diferences)-1]
+    growthfactor = diferences.iloc[:len(diferences)-1]
     print("diferences array")
-    print(grothfactor)
+    print(growthfactor)
+    return growthfactor
     
 #def print_projection(daset,dataset_pct,country_name):
 
@@ -49,6 +50,8 @@ dataspain, dataspain_pct = print_country(timeseries,'Spain')
 #print_country(timeseries,'UK')
 
 get_growth_factor(timeseries,'Spain')
+get_growth_factor(timeseries,'Italy')
+
 #print_country(timeseries,'South Korea')
 
 plt.legend()
