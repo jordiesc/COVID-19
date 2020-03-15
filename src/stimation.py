@@ -4,25 +4,42 @@ import numpy as np
 from datetime import datetime  
 from datetime import timedelta  
 from pandas import DataFrame
+from sklearn.linear_model import LinearRegression
 
 
 
-def stimation(df: DataFrame , likehood, initialvalue):
-    print (datetime.now() + timedelta(days=1) ) 
+
+def stimation_geometric(df: DataFrame , likehood, initialvalue):
+    # print (datetime.now() + timedelta(days=1) ) 
     lst = []
     x = initialvalue
-    for i in range(15):
+    for i in range(7):
         x = x + x * likehood
         lst.append(x)
-        print(x)
         df.loc[str(i)]=x
-    print(df)
     return df
 
+
     
+def stimation_geometric( likehood, initialvalue):
+    lst = []
+    x = initialvalue
+    for i in range(7):
+        x = x + x * likehood
+        lst.append(x)
+        
+    return lst
 
-df = DataFrame(columns=['casos'])
-df = stimation(df,.2,100)
+def stimation_translation(likehood :[], initialvalue ):
+    lst = []
+    x = initialvalue
+    for i in range(7):
+        x = x + x * likehood[i]
+        lst.append( x)  
+    return lst
 
-df.plot()
-plt.show()
+ 
+
+
+
+
