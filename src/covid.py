@@ -4,22 +4,23 @@ import numpy as np
 import stimation
 from sklearn.linear_model import LinearRegression
 
-routa = "csse_covid_19_data/csse_covid_19_time_series/time_series_19-covid-Confirmed.csv"
+routa = "csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confirmed_global.csv"
 
 def print_country(dataset,country_name):
     countrypre = dataset.loc[country_name,:]
     #print(countrypre)
-    country = countrypre["1/22/20":]
+    country = countrypre["2/22/20":]
     country_pct = country.pct_change()
     #print(country)
-    #print(country_pct)
+    #print("percentatges"," ",country_name)
+    #print(country_pct[-10:])
     country_pct.plot(label=str(country_name))
     return country, country_pct
 
 
 def get_growth_factor(dataset,country_name):
     countrypre = dataset.loc[country_name,:]
-    country = countrypre["1/22/20":]
+    country = countrypre["2/22/20":]
     diferences = country.diff()
 
     print(diferences)
@@ -47,9 +48,9 @@ def get_growth_factor(dataset,country_name):
 timeseries = pd.read_csv(routa, index_col ="Country/Region")
 print("printamos todo el DataSet")
 
-print_country(timeseries,'Italy')
+dataitaly, dataitaly_pct = print_country(timeseries,'Italy')
 
-dataitaly, dataitaly_pct  = print_country(pd.read_csv(routa, index_col ="Province/State"),'France')
+#dataitaly, dataitaly_pct  i= print_country(pd.read_csv(routa, index_col ="Province/State"),'France')
 dataspain, dataspain_pct = print_country(timeseries,'Spain')
 
 #print_country(timeseries,'UK')
