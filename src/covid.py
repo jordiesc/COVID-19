@@ -9,7 +9,7 @@ routa = "csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confir
 def print_country(dataset,country_name):
     countrypre = dataset.loc[country_name,:]
     #print(countrypre)
-    country = countrypre["3/22/20":]
+    country = countrypre["4/22/20":]
     country_pct = country.pct_change()
     #print(country)
     #print("percentatges"," ",country_name)
@@ -20,10 +20,10 @@ def print_country(dataset,country_name):
 
 def get_growth_factor(dataset,country_name):
     countrypre = dataset.loc[country_name,:]
-    country = countrypre["3/22/20":]
+    country = countrypre["4/22/20":]
     diferences = country.diff()
 
-    print(diferences)
+    #print(diferences)
     print(diferences.fillna(0))
     for i in range(2,len(diferences)):
         # print("diferences ..",diferences.iloc[i-1]) 
@@ -57,9 +57,9 @@ dataspain, dataspain_pct = print_country(timeseries,'Spain')
 
 get_growth_factor(timeseries,'Spain')
 get_growth_factor(timeseries,'Italy')
+get_growth_factor(timeseries,'Czechia')
 
-
-
+#get_growth_factor(timeseries,'Japan')
 
 #print_country(timeseries,'South Korea')
 
