@@ -5,11 +5,12 @@ import stimation
 from sklearn.linear_model import LinearRegression
 
 routa = "csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confirmed_global.csv"
+FECHA = '4/22/20'  
 
 def print_country(dataset,country_name):
     countrypre = dataset.loc[country_name,:]
     #print(countrypre)
-    country = countrypre["4/22/20":]
+    country = countrypre[FECHA:]
     country_pct = country.pct_change()
     #print(country)
     #print("percentatges"," ",country_name)
@@ -20,7 +21,7 @@ def print_country(dataset,country_name):
 
 def get_growth_factor(dataset,country_name):
     countrypre = dataset.loc[country_name,:]
-    country = countrypre["4/22/20":]
+    country = countrypre[FECHA:]
     diferences = country.diff()
 
     #print(diferences)
@@ -38,8 +39,42 @@ def get_growth_factor(dataset,country_name):
     print(growthfactor)
     return growthfactor
     
+def get_growth_factor_multiple(dataset,country_name):
+    countrypre = find_country(dataset,country_name)
+    print(countrypre)
+    country = countrypre[FECHA:]
+    print(country)
+    diferences = country.diff()
+    print(diferences)
+
+    #print(diferences)
+    print(diferences.fillna(0))
+    for i in range(2,len(diferences)):
+        # print("diferences ..",diferences.iloc[i-1]) 
+        if diferences.iloc[i-1] != 0 :
+            growth_factor = diferences.iloc[i] / diferences.iloc[i-1] 
+            # print(" groth_factor :",diferences.iloc[i]," ",diferences.iloc[i-1])
+            diferences.iat[i-1] = growth_factor
+
+        # print("diferences iloc ",diferences.iloc[i], diferences.iloc[i-1] )
+    growthfactor = diferences.iloc[:len(diferences)-1]
+    print("diferences array")
+    print(growthfactor)
+    return growthfactor
+
 #def print_projection(daset,dataset_pct,country_name):
 
+def find_country(dataset,country_name):
+    # for i in dataset.index:
+    #     print(i)
+    
+    dataset.fillna
+    reduced = dataset.loc[country_name ]
+    one = reduced.loc[ reduced['Province/State'].isnull() ]
+    return one
+    # one = reduced.loc[ reduced['Province/State']== 'Bermuda' ]
+    # print (reduced)
+    # print(one)
 
 
 
@@ -58,6 +93,11 @@ dataspain, dataspain_pct = print_country(timeseries,'Spain')
 get_growth_factor(timeseries,'Spain')
 get_growth_factor(timeseries,'Italy')
 get_growth_factor(timeseries,'Czechia')
+get_growth_factor(timeseries,'Germany')
+get_growth_factor(timeseries,'Japan')
+# get_growth_factor(timeseries,'France')
+
+get_growth_factor_multiple(timeseries,'United Kingdom')
 
 #get_growth_factor(timeseries,'Japan')
 
