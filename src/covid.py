@@ -41,6 +41,7 @@ def get_growth_factor(dataset,country_name):
     
 def get_growth_factor_multiple(dataset,country_name):
     countrypre = find_country(dataset,country_name)
+    
     print(countrypre)
     country = countrypre[FECHA:]
     print(country)
