@@ -5,9 +5,10 @@ import stimation
 from sklearn.linear_model import LinearRegression
 
 routa = "csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confirmed_global.csv"
-FECHA = '4/22/20'  
+FECHA = '6/22/20'  
 
 def print_country(dataset,country_name):
+    
     countrypre = dataset.loc[country_name,:]
     #print(countrypre)
     country = countrypre[FECHA:]
@@ -126,10 +127,7 @@ plt.show()
 
 mediaspain = dataspain_pct[-2:].mean()
 lastspain = dataspain.tail(1).iat[0]
-
-
 print("Simulacion Spain ")
-
 lstgeometric = stimation.stimation_geometric(mediaspain,lastspain)
 lsttransala  = stimation.stimation_translation(dataitaly_pct[-7:].values,lastspain)
 
