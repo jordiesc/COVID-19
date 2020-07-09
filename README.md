@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 python -m unittest discover -v -s "./src" -p "*_test.py"
 =======
 # COVID-19 Data Repository by the Center for Systems Science and Engineering (CSSE) at Johns Hopkins University
@@ -118,4 +117,3 @@ https://systems.jhu.edu/research/public-health/ncov/
 5. The Website relies upon publicly available data from multiple sources that do not always agree. The Johns Hopkins University hereby disclaims any and all representations and warranties with respect to the Website, including accuracy, fitness for use, reliability, completeness, and non-infringement of third party rights. 
 6. Any use of the Johns Hopkins’ names, logos, trademarks, and/or trade dress in a factually inaccurate manner or for marketing, promotional or commercial purposes is strictly prohibited.  
 7. These terms and conditions are subject to change.   Your use of the Website constitutes your acceptance of these terms and conditions and any future modifications thereof.
->>>>>>> upstream/master
